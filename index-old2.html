@@ -6,7 +6,7 @@
 :root {
     /* colors */
     --background-color: rgba(254, 230, 132, 1);
-    /* --color-gray-shade: hsla(225, 37%, 20%, 1); // border beard */
+    --color-gray-shade: hsla(225, 37%, 20%, 1);
     /* sizing */
     --pole-width: 3.5vw;
     --bead-width: 5vw;
@@ -41,35 +41,15 @@ body main {
     place-items: center;
 }
 body main .abacus {
-    display: grid;
-    grid-template:
-        "top top top" var(--pole-width)
-        "left wires right" auto
-        "bottom bottom bottom" var(--pole-width) /
-        var(--pole-width) auto var(--pole-width);
+    display: flex;
 }
 body main .abacus .pole {
+    width: var(--pole-width);
+    border-radius: calc(var(--pole-width) / 2);
     background: #644c44;
-    /* border: 0.25rem solid var(--color-gray-shade); */
-}
-body main .abacus .pole.top {
-    grid-area: top;
-    border-bottom: none;
-}
-body main .abacus .pole.left {
-    grid-area: left;
-    border-right: none;
-}
-body main .abacus .pole.right {
-    grid-area: right;
-    border-left: none;
-}
-body main .abacus .pole.bottom {
-    grid-area: bottom;
-    border-top: none;
+    border: 0.25rem solid var(--color-gray-shade);
 }
 body main .abacus .wires {
-    grid-area: wires;
     width: calc((var(--bead-width) + 0.5rem) * calc(var(--bead-amount) + 2) + 1.5rem);
     display: flex;
     padding-block: 3rem;
@@ -84,7 +64,7 @@ body main .abacus .wires section {
     height: calc(var(--pole-width) / 3);
     justify-content: flex-start;
     align-items: center;
-    background: #999595;
+   background: #999595;
     box-shadow: inset 0 calc(-1 * var(--pole-width) / 7) #7C7C7C, inset 0 calc(-1 * var(--pole-width) / 5) #bdbdbd;
 }
 body main .abacus .wires section.first {
@@ -123,6 +103,7 @@ body main .abacus .wires section .bead {
     transition: margin-left 0.2s cubic-bezier(0.76, 0, 0.24, 1);
 }
 body main .abacus .wires section .bead:has(input:checked) {
+    /* margin-left: calc(var(--bead-width) * 2 + 1rem); */
     margin-left: calc(var(--bead-width) * 2 + 6rem);
 }
 body main .abacus .wires section .bead::before {
@@ -165,7 +146,6 @@ body main .abacus .wires section .bead input {
 <body>
 <main>
     <div class="abacus">
-        <div class="pole top"></div>
         <div class="pole left"></div>
         <div class="wires">
             <section class="first">
@@ -273,45 +253,8 @@ body main .abacus .wires section .bead input {
                     <input type="radio" name="thirdRow" id="c_0" value="0" /><label for="c_0"></label>
                 </div>
             </section>
-			<section class="fourth">
-    <div class="bead light-400">
-        <input type="radio" name="fourthRow" id="d_1" value="1" /><label for="d_1"></label>
-    </div>
-    <div class="bead light-300">
-        <input type="radio" name="fourthRow" id="d_2" value="2" /><label for="d_2"></label>
-    </div>
-    <div class="bead light-200">
-        <input type="radio" name="fourthRow" id="d_3" value="3" /><label for="d_3"></label>
-    </div>
-    <div class="bead light-100">
-        <input type="radio" name="fourthRow" id="d_4" value="4" /><label for="d_4"></label>
-    </div>
-    <div class="bead normal">
-        <input type="radio" name="fourthRow" id="d_5" value="5" /><label for="d_5"></label>
-    </div>
-    <div class="bead dark-100">
-        <input type="radio" name="fourthRow" id="d_6" value="6" /><label for="d_6"></label>
-    </div>
-    <div class="bead dark-200">
-        <input type="radio" name="fourthRow" id="d_7" value="7" /><label for="d_7"></label>
-    </div>
-    <div class="bead dark-300">
-        <input type="radio" name="fourthRow" id="d_8" value="8" /><label for="d_8"></label>
-    </div>
-    <div class="bead dark-400">
-        <input type="radio" name="fourthRow" id="d_9" value="9" /><label for="d_9"></label>
-    </div>
-    <div class="bead light-500">
-        <input type="radio" name="fourthRow" id="d_10" value="10" /><label for="d_10"></label>
-    </div>
-    <div class="bead reset">
-        <input type="radio" name="fourthRow" id="d_0" value="0" /><label for="d_0"></label>
-    </div>
-</section>
-			
         </div>
         <div class="pole right"></div>
-        <div class="pole bottom"></div>
     </div>
 </main>
 <script></script>
