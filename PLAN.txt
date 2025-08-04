@@ -4,3 +4,5 @@ Reverse Bead Movement: Adjust the translate and margin-left rules
 to move beads left when selected, instead of right.
 
 Важко зробити вирівнювання по лівій стороні . хоча вже можна наробити 12 
+
+how to remove elements / color:  #565555;
