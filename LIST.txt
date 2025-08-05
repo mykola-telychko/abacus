@@ -13,3 +13,6 @@ https://codepen.io/telychko-mykola/pen/YPyZJbV
 https://codepen.io/telychko-mykola/pen/GgpWYVO?editors=1100
 
 colors: rebeccapurple
+
+// tutorials
+https://youtu.be/qvtm_N9nhq8?si=l6HZwRYx57iwo96B

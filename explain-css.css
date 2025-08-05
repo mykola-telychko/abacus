@@ -1,0 +1,189 @@
+/* Глобальні змінні для кольорів та розмірів */
+:root {
+    --background-color: #faf1cb; /* Колір фону */
+    /* Розміри елементів */
+    --pole-width: 3.5vw; /* Ширина стовпчиків абака */
+    --bead-width: 6vw;   /* Ширина кульок */
+    --bead-amount: 10;   /* Кількість кульок у ряду */
+}
+
+/* Базові налаштування для всіх елементів */
+* {
+    box-sizing: border-box; /* Правильний розрахунок розмірів з урахуванням padding та border */
+}
+
+/* Налаштування HTML */
+html { 
+    font-size: 2.8vw; /* Базова величина шрифту */
+}
+
+/* Стилі для body */
+body {
+    background: var(--background-color); /* Фон */
+    counter-reset: valueAdded; /* Ініціалізація лічильника */
+    min-height: 100vh; /* Мінімальна висота - на весь екран */
+    display: flex;
+    flex-direction: column-reverse; /* Елементи у зворотному порядку */
+    align-items: center;
+    justify-content: flex-end; /* Вирівнювання до низу */
+}
+
+/* Стилі для заголовка */
+body h2 {
+    margin-top: 10vh;
+    font-size: 3rem;
+}
+body h2::after {
+    content: counter(valueAdded); /* Відображення значення лічильника */
+    display: inline;
+}
+
+/* Основна сітка */
+body main {
+    display: grid;
+    flex-grow: 1; /* Займає весь доступний простір */
+    place-items: center; /* Центрування */
+}
+
+/* Стилі для абака */
+body main .abacus {
+    display: grid;
+    /* Сітка з 3 рядків та 3 колонок */
+    grid-template:
+        "top top top" var(--pole-width)
+        "left wires right" auto
+        "bottom bottom bottom" var(--pole-width) /
+        var(--pole-width) auto var(--pole-width);
+}
+
+/* Стилі для стовпчиків абака */
+body main .abacus .pole {
+    background: #644c44; /* Колір стовпчиків */
+}
+body main .abacus .pole.top {
+    grid-area: top; /* Позиціонування у сітці */
+    border-bottom: none;
+}
+body main .abacus .pole.left {
+    grid-area: left;
+    border-right: none;
+}
+body main .abacus .pole.right {
+    grid-area: right;
+    border-left: none;
+}
+body main .abacus .pole.bottom {
+    grid-area: bottom;
+    border-top: none;
+}
+
+/* Стилі для дротів з кульками */
+body main .abacus .wires {
+    grid-area: wires;
+    /* Розрахунок ширини на основі кількості кульок */
+    width: calc((var(--bead-width) + 0.5rem) * calc(var(--bead-amount) + 2) + 1.5rem);
+    display: flex;
+    padding-block: 3rem; /* Внутрішні відступи зверху та знизу */
+    flex-direction: column; /* Вертикальне розташування рядів */
+    gap: 4rem; /* Відступи між рядами */
+}
+
+/* Стилі для кожного ряду кульок */
+body main .abacus .wires section {
+    display: flex;
+    position: relative;
+    gap: 4px; /* Відступи між кульками */
+    padding-inline: 1rem; /* Внутрішні відступи з боків */
+    height: calc(var(--pole-width) / 3); /* Висота ряду */
+    justify-content: flex-start;
+    align-items: center;
+    background: #999595; /* Колір дроту */
+    /* Тінь для створення ефекту об'ємності */
+    box-shadow: inset 0 calc(-1 * var(--pole-width) / 7) #7C7C7C, 
+                inset 0 calc(-1 * var(--pole-width) / 5) #bdbdbd;
+}
+
+/* Кольорові налаштування для кожного ряду */
+body main .abacus .wires section.first {
+    --color-h: 0;    /* Hue для першого ряду */
+    --color-s: 50%;  /* Saturation */
+}
+body main .abacus .wires section.second {
+    --color-h: 90;
+    --color-s: 50%;
+}
+body main .abacus .wires section.third {
+    --color-h: 180;
+    --color-s: 50%;
+}
+body main .abacus .wires section.fourth {
+    --color-h: 270;
+    --color-s: 50%;
+}
+
+/* Логіка лічильника для кожного ряду */
+body main .abacus .wires section.first .bead:has(input:checked) ~ .bead input {
+    counter-increment: valueAdded 1; /* +1 для першого ряду */
+}
+body main .abacus .wires section.second .bead:has(input:checked) ~ .bead input {
+    counter-increment: valueAdded 10; /* +10 для другого ряду */
+}
+body main .abacus .wires section.third .bead:has(input:checked) ~ .bead input {
+    counter-increment: valueAdded 100; /* +100 для третього ряду */
+}
+body main .abacus .wires section.fourth .bead:has(input:checked) ~ .bead input {
+    counter-increment: valueAdded 1000; /* +1000 для четвертого ряду */
+}
+
+/* Анімація руху кульок */
+body main .abacus .wires section .bead:has(input:checked) ~ .bead:not(.reset) label {
+    translate: calc(-1 * var(--bead-width) - 0.1rem); /* Зсув кульок */
+}
+body main .abacus .wires section .bead {
+    position: relative;
+    transition: margin-left 0.2s cubic-bezier(0.76, 0, 0.24, 1); /* Плавний рух */
+}
+body main .abacus .wires section .bead:has(input:checked) {
+    margin-left: calc(var(--bead-width) * 2 + 6rem); /* Позиція вибраної кульки */
+}
+
+/* Стилі для кульок */
+body main .abacus .wires section .bead::before {
+    display: block;
+    box-sizing: border-box;
+    place-items: center;
+    background: #D1A179; /* Колір кульок */
+    width: calc(var(--bead-width) - 5px);
+    height: calc(var(--bead-width) * 1.5);
+    text-align: center;
+    border-radius: 50%; /* Кругла форма */
+    content: "\23DC"; /* Символ кульки */
+    color: #D1A179;
+}
+
+/* Стилі для спеціальних кульок (5 і 6) */
+body main .abacus .wires section .bead:nth-child(5)::before,
+body main .abacus .wires section .bead:nth-child(6)::before {
+    background-color: #565555; /* Темніший колір */
+    color:  #565555;
+}
+
+/* Стилі для кнопки скидання (прихована) */
+body main .abacus .wires section .bead.reset {
+    position: absolute;
+    right: 1.25rem;
+    opacity: 0; /* Невидима */
+}
+
+/* Стилі для міток та інпутів */
+body main .abacus .wires section .bead label {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+}
+body main .abacus .wires section .bead input {
+    opacity: 0; /* Приховані інпути */
+    position: absolute;
+}
