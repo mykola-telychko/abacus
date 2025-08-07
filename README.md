@@ -2,8 +2,8 @@
 
 A comparison of the most popular abacus designs used historically and in modern education.
 
-![Abacus Types Collage](https://via.placeholder.com/800x400?text=Chinese+Japanese+USSR+Abacus)  
-*(Example image placeholder)*
+<!-- ![Abacus Types Collage](https://via.placeholder.com/800x400?text=Chinese+Japanese+USSR+Abacus)   -->
+<!-- *(Example image placeholder)* -->
 
 ## Table of Contents
 - [Chinese Abacus (Suanpan)](#chinese-abacus-suanpan-算盘)
