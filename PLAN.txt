@@ -5,6 +5,8 @@ to move beads left when selected, instead of right.
 
 Важко зробити вирівнювання по лівій стороні . хоча вже можна наробити 12 
 
+відстань між кісточками 
+
 how to remove elements / color:  #565555;
 
 index4-basic.html - good works / good volumes
