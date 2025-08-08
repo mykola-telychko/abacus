@@ -2,321 +2,323 @@
 <html>
 <head>
 <title>Abacus</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-
 <style>
 :root {
-    --background-color: #faf1cb;
-    /* sizing */
-    --pole-width: 3.5vw;
-    --bead-width: 6vw;
-    --bead-amount: 10;
+--background-color: #faf1cb;
+/* --color-gray-shade: hsla(225, 37%, 20%, 1); // border beard */
+/* sizing */
+--pole-width: 3.5vw;
+--bead-width: 6vw;
+--bead-amount: 10;
 }
 * {
-    box-sizing: border-box;
+box-sizing: border-box;
 }
 html { font-size: 2.8vw;}
 body {
-    background: var(--background-color);
-    counter-reset: valueAdded;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: flex-end;
+background: var(--background-color);
+counter-reset: valueAdded;
+min-height: 100vh;
+display: flex;
+flex-direction: column-reverse;
+align-items: center;
+justify-content: flex-end;
 }
 body h2 {
-    margin-top: 10vh;
-    font-size: 3rem;
+margin-top: 10vh;
+font-size: 3rem;
 }
 body h2::after {
-    content: counter(valueAdded);
-    display: inline;
+content: counter(valueAdded);
+display: inline;
 }
 body main {
-    display: grid;
-    flex-grow: 1;
-    place-items: center;
+display: grid;
+flex-grow: 1;
+place-items: center;
 }
 body main .abacus {
-    display: grid;
-    grid-template:
-        "top top top" var(--pole-width)
-        "left wires right" auto
-        "bottom bottom bottom" var(--pole-width) /
-        var(--pole-width) auto var(--pole-width);
+display: grid;
+grid-template:
+"top top top" var(--pole-width)
+"left wires right" auto
+"bottom bottom bottom" var(--pole-width) /
+var(--pole-width) auto var(--pole-width);
 }
 body main .abacus .pole {
-    background: #644c44;
-    /* border: 0.25rem solid var(--color-gray-shade); */
+background: #644c44;
+/* border: 0.25rem solid var(--color-gray-shade); */
 }
 body main .abacus .pole.top {
-    grid-area: top;
-    border-bottom: none;
+grid-area: top;
+border-bottom: none;
 }
 body main .abacus .pole.left {
-    grid-area: left;
-    border-right: none;
+grid-area: left;
+border-right: none;
 }
 body main .abacus .pole.right {
-    grid-area: right;
-    border-left: none;
+grid-area: right;
+border-left: none;
 }
 body main .abacus .pole.bottom {
-    grid-area: bottom;
-    border-top: none;
+grid-area: bottom;
+border-top: none;
 }
 body main .abacus .wires {
-    grid-area: wires;
-    width: calc((var(--bead-width) + 0.5rem) * calc(var(--bead-amount) + 2) + 1.5rem);
-    display: flex;
-    padding-block: 3rem;
-    flex-direction: column;
-    gap: 4rem;
+grid-area: wires;
+width: calc((var(--bead-width) + 0.5rem) * calc(var(--bead-amount) + 2) + 1.5rem);
+display: flex;
+padding-block: 3rem;
+flex-direction: column;
+gap: 4rem;
 }
 
 /* body main .abacus .wires {
-    grid-area: wires;
-    width: calc((var(--bead-width) + 0.5rem) * calc(var(--bead-amount) + 2) + 1.5rem);
-    min-width: 100px; 
-    display: flex;
-    padding-block: 3rem;
-    flex-direction: column;
-    gap: 4rem;
+   grid-area: wires;
+   width: calc((var(--bead-width) + 0.5rem) * calc(var(--bead-amount) + 2) + 1.5rem);
+   min-width: 100px; 
+   display: flex;
+   padding-block: 3rem;
+   flex-direction: column;
+   gap: 4rem;
 } */
 
 body main .abacus .wires section {
-    display: flex;
-    position: relative;
-    gap: 4px;
-    padding-inline: 1rem;
-    /* 1.5rem; - відступ зліва */
-    height: calc(var(--pole-width) / 3);
-    justify-content: flex-start;
-    align-items: center;
-    background: #999595;
-    box-shadow: inset 0 calc(-1 * var(--pole-width) / 7) #7C7C7C, inset 0 calc(-1 * var(--pole-width) / 5) #bdbdbd;
+display: flex;
+position: relative;
+gap: 4px;
+padding-inline: 1rem;
+height: calc(var(--pole-width) / 3);
+justify-content: flex-start;
+align-items: center;
+background: #999595;
+box-shadow: inset 0 calc(-1 * var(--pole-width) / 7) #7C7C7C, inset 0 calc(-1 * var(--pole-width) / 5) #bdbdbd;
 }
 body main .abacus .wires section.first {
-    --color-h: 0;
-    --color-s: 50%;
+--color-h: 0;
+--color-s: 50%;
 }
 body main .abacus .wires section.first .bead:has(input:checked) ~ .bead input {
-    counter-increment: valueAdded 1;
+counter-increment: valueAdded 1;
 }
 body main .abacus .wires section.second {
-    --color-h: 90;
-    --color-s: 50%;
+--color-h: 90;
+--color-s: 50%;
 }
 body main .abacus .wires section.second .bead:has(input:checked) ~ .bead input {
-    counter-increment: valueAdded 10;
+counter-increment: valueAdded 10;
 }
 body main .abacus .wires section.third {
-    --color-h: 180;
-    --color-s: 50%;
+--color-h: 180;
+--color-s: 50%;
 }
 body main .abacus .wires section.third .bead:has(input:checked) ~ .bead input {
-    counter-increment: valueAdded 100;
+counter-increment: valueAdded 100;
 }
 body main .abacus .wires section.fourth {
-    --color-h: 270;
-    --color-s: 50%;
+--color-h: 270;
+--color-s: 50%;
 }
 body main .abacus .wires section.fourth .bead:has(input:checked) ~ .bead input {
-    counter-increment: valueAdded 1000;
+counter-increment: valueAdded 1000;
 }
 body main .abacus .wires section .bead:has(input:checked) ~ .bead:not(.reset) label {
-    translate: calc(-1 * var(--bead-width) - 0.1rem);
+translate: calc(-1 * var(--bead-width) - 0.1rem);
 }
 body main .abacus .wires section .bead {
-    position: relative;
-    transition: margin-left 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+position: relative;
+transition: margin-left 0.2s cubic-bezier(0.76, 0, 0.24, 1);
 }
 body main .abacus .wires section .bead:has(input:checked) {
-    margin-left: calc(var(--bead-width) * 2 + 6rem);
+margin-left: calc(var(--bead-width) * 2 + 6.4rem);
 }
 body main .abacus .wires section .bead::before {
-    display: block;
-    box-sizing: border-box;
-    place-items: center;
-    background: #D1A179;
-    width: calc(var(--bead-width) - 5px);
-    height: calc(var(--bead-width) * 1.7);
-    text-align: center;
-    border-radius: 50%;
-    content: "\23DC";
+display: block;
+box-sizing: border-box;
+place-items: center;
+background: #D1A179;
+width: calc(var(--bead-width) - 5px);
+height: calc(var(--bead-width) * 1.7);
+text-align: center;
+border-radius: 50%;
+    border: 0.25rem solid var(--color-gray-shade);
+content: "\23DC";
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: hsla(var(--color-h), var(--color-s), 90%, 0.7);
     color: #D1A179;
 }
 body main .abacus .wires section .bead:nth-child(5)::before,
 body main .abacus .wires section .bead:nth-child(6)::before {
-    background-color: #565555;
+background-color: #565555;
     color:  #565555;
 }
 body main .abacus .wires section .bead.reset {
-    position: absolute;
-    right: 1.25rem;
-    opacity: 0;
+position: absolute;
+/* right: 1.25rem; */
+right: 0.2rem;
+opacity: 0;
 }
 body main .abacus .wires section .bead label {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
+width: 100%;
+height: 100%;
+display: block;
+position: absolute;
+top: 0;
 }
 body main .abacus .wires section .bead input {
-    opacity: 0;
-    position: absolute;
+opacity: 0;
+position: absolute;
 }
 </style>
 </head>
 <body>
 <main>
-    <div class="abacus">
-        <div class="pole top"></div>
-        <div class="pole left"></div>
-        <div class="wires">
-            <section class="first">
-                <div class="bead light-400">
-                    <input type="radio" name="firstRow" id="a_1" value="1" /><label for="a_1"></label>
-                </div>
-                <div class="bead light-300">
-                    <input type="radio" name="firstRow" id="a_2" value="2" /><label for="a_2"></label>
-                </div>
-                <div class="bead light-200">
-                    <input type="radio" name="firstRow" id="a_3" value="3" /><label for="a_3"></label>
-                </div>
-                <div class="bead light-100">
-                    <input type="radio" name="firstRow" id="a_4" value="4" /><label for="a_4"></label>
-                </div>
-                <div class="bead normal">
-                    <input type="radio" name="firstRow" id="a_5" value="5" /><label for="a_5"></label>
-                </div>
-                <div class="bead dark-100">
-                    <input type="radio" name="firstRow" id="a_6" value="6" /><label for="a_6"></label>
-                </div>
-                <div class="bead dark-200">
-                    <input type="radio" name="firstRow" id="a_7" value="7" /><label for="a_7"></label>
-                </div>
-                <div class="bead dark-300">
-                    <input type="radio" name="firstRow" id="a_8" value="8" /><label for="a_8"></label>
-                </div>
-                <div class="bead dark-400">
-                    <input type="radio" name="firstRow" id="a_9" value="9" /><label for="a_9"></label>
-                </div>
-                <div class="bead light-500">
-                    <input type="radio" name="firstRow" id="a_10" value="10" /><label for="a_10"></label>
-                </div>
-                <div class="bead reset">
-                    <input type="radio" name="firstRow" id="a_0" value="0" /><label for="a_0"></label>
-                </div>
-            </section>
-            <section class="second">
-                <div class="bead light-400">
-                    <input type="radio" name="secondRow" id="b_1" value="1" /><label for="b_1"></label>
-                </div>
-                <div class="bead light-300">
-                    <input type="radio" name="secondRow" id="b_2" value="2" /><label for="b_2"></label>
-                </div>
-                <div class="bead light-200">
-                    <input type="radio" name="secondRow" id="b_3" value="3" /><label for="b_3"></label>
-                </div>
-                <div class="bead light-100">
-                    <input type="radio" name="secondRow" id="b_4" value="4" /><label for="b_4"></label>
-                </div>
-                <div class="bead normal">
-                    <input type="radio" name="secondRow" id="b_5" value="5" /><label for="b_5"></label>
-                </div>
-                <div class="bead dark-100">
-                    <input type="radio" name="secondRow" id="b_6" value="6" /><label for="b_6"></label>
-                </div>
-                <div class="bead dark-200">
-                    <input type="radio" name="secondRow" id="b_7" value="7" /><label for="b_7"></label>
-                </div>
-                <div class="bead dark-300">
-                    <input type="radio" name="secondRow" id="b_8" value="8" /><label for="b_8"></label>
-                </div>
-                <div class="bead dark-400">
-                    <input type="radio" name="secondRow" id="b_9" value="9" /><label for="b_9"></label>
-                </div>
-                <div class="bead light-500">
-                    <input type="radio" name="secondRow" id="b_10" value="10" /><label for="b_10"></label>
-                </div>
-                <div class="bead reset">
-                    <input type="radio" name="secondRow" id="b_0" value="0" /><label for="b_0"></label>
-                </div>
-            </section>
-            <section class="third">
-                <div class="bead light-400">
-                    <input type="radio" name="thirdRow" id="c_1" value="1" /><label for="c_1"></label>
-                </div>
-                <div class="bead light-300">
-                    <input type="radio" name="thirdRow" id="c_2" value="2" /><label for="c_2"></label>
-                </div>
-                <div class="bead light-200">
-                    <input type="radio" name="thirdRow" id="c_3" value="3" /><label for="c_3"></label>
-                </div>
-                <div class="bead light-100">
-                    <input type="radio" name="thirdRow" id="c_4" value="4" /><label for="c_4"></label>
-                </div>
-                <div class="bead normal">
-                    <input type="radio" name="thirdRow" id="c_5" value="5" /><label for="c_5"></label>
-                </div>
-                <div class="bead dark-100">
-                    <input type="radio" name="thirdRow" id="c_6" value="6" /><label for="c_6"></label>
-                </div>
-                <div class="bead dark-200">
-                    <input type="radio" name="thirdRow" id="c_7" value="7" /><label for="c_7"></label>
-                </div>
-                <div class="bead dark-300">
-                    <input type="radio" name="thirdRow" id="c_8" value="8" /><label for="c_8"></label>
-                </div>
-                <div class="bead dark-400">
-                    <input type="radio" name="thirdRow" id="c_9" value="9" /><label for="c_9"></label>
-                </div>
-                <div class="bead light-500">
-                    <input type="radio" name="thirdRow" id="c_10" value="10" /><label for="c_10"></label>
-                </div>
-                <div class="bead reset">
-                    <input type="radio" name="thirdRow" id="c_0" value="0" /><label for="c_0"></label>
-                </div>
-            </section>
-			<section class="fourth">
-    <div class="bead light-400">
-        <input type="radio" name="fourthRow" id="d_1" value="1" /><label for="d_1"></label>
-    </div>
-    <div class="bead light-300">
-        <input type="radio" name="fourthRow" id="d_2" value="2" /><label for="d_2"></label>
-    </div>
-    <div class="bead light-200">
-        <input type="radio" name="fourthRow" id="d_3" value="3" /><label for="d_3"></label>
-    </div>
-    <div class="bead light-100">
-        <input type="radio" name="fourthRow" id="d_4" value="4" /><label for="d_4"></label>
-    </div>
-    <div class="bead normal">
-        <input type="radio" name="fourthRow" id="d_5" value="5" /><label for="d_5"></label>
-    </div>
-    <div class="bead dark-100">
-        <input type="radio" name="fourthRow" id="d_6" value="6" /><label for="d_6"></label>
-    </div>
-    <div class="bead dark-200">
-        <input type="radio" name="fourthRow" id="d_7" value="7" /><label for="d_7"></label>
-    </div>
-    <div class="bead dark-300">
-        <input type="radio" name="fourthRow" id="d_8" value="8" /><label for="d_8"></label>
-    </div>
-    <div class="bead dark-400">
-        <input type="radio" name="fourthRow" id="d_9" value="9" /><label for="d_9"></label>
-    </div>
-    <div class="bead light-500">
-        <input type="radio" name="fourthRow" id="d_10" value="10" /><label for="d_10"></label>
-    </div>
-    <div class="bead reset">
-        <input type="radio" name="fourthRow" id="d_0" value="0" /><label for="d_0"></label>
-    </div>
+<div class="abacus">
+<div class="pole top"></div>
+<div class="pole left"></div>
+<div class="wires">
+<section class="first">
+<div class="bead light-400">
+<input type="radio" name="firstRow" id="a_1" value="1" /><label for="a_1"></label>
+</div>
+<div class="bead light-300">
+<input type="radio" name="firstRow" id="a_2" value="2" /><label for="a_2"></label>
+</div>
+<div class="bead light-200">
+<input type="radio" name="firstRow" id="a_3" value="3" /><label for="a_3"></label>
+</div>
+<div class="bead light-100">
+<input type="radio" name="firstRow" id="a_4" value="4" /><label for="a_4"></label>
+</div>
+<div class="bead normal">
+<input type="radio" name="firstRow" id="a_5" value="5" /><label for="a_5"></label>
+</div>
+<div class="bead dark-100">
+<input type="radio" name="firstRow" id="a_6" value="6" /><label for="a_6"></label>
+</div>
+<div class="bead dark-200">
+<input type="radio" name="firstRow" id="a_7" value="7" /><label for="a_7"></label>
+</div>
+<div class="bead dark-300">
+<input type="radio" name="firstRow" id="a_8" value="8" /><label for="a_8"></label>
+</div>
+<div class="bead dark-400">
+<input type="radio" name="firstRow" id="a_9" value="9" /><label for="a_9"></label>
+</div>
+<div class="bead light-500">
+<input type="radio" name="firstRow" id="a_10" value="10" /><label for="a_10"></label>
+</div>
+<div class="bead reset">
+<input type="radio" name="firstRow" id="a_0" value="0" /><label for="a_0"></label>
+</div>
 </section>
-    </div><div class="pole right"></div> <div class="pole bottom"></div></div>
+<section class="second">
+<div class="bead light-400">
+<input type="radio" name="secondRow" id="b_1" value="1" /><label for="b_1"></label>
+</div>
+<div class="bead light-300">
+<input type="radio" name="secondRow" id="b_2" value="2" /><label for="b_2"></label>
+</div>
+<div class="bead light-200">
+<input type="radio" name="secondRow" id="b_3" value="3" /><label for="b_3"></label>
+</div>
+<div class="bead light-100">
+<input type="radio" name="secondRow" id="b_4" value="4" /><label for="b_4"></label>
+</div>
+<div class="bead normal">
+<input type="radio" name="secondRow" id="b_5" value="5" /><label for="b_5"></label>
+</div>
+<div class="bead dark-100">
+<input type="radio" name="secondRow" id="b_6" value="6" /><label for="b_6"></label>
+</div>
+<div class="bead dark-200">
+<input type="radio" name="secondRow" id="b_7" value="7" /><label for="b_7"></label>
+</div>
+<div class="bead dark-300">
+<input type="radio" name="secondRow" id="b_8" value="8" /><label for="b_8"></label>
+</div>
+<div class="bead dark-400">
+<input type="radio" name="secondRow" id="b_9" value="9" /><label for="b_9"></label>
+</div>
+<div class="bead light-500">
+<input type="radio" name="secondRow" id="b_10" value="10" /><label for="b_10"></label>
+</div>
+<div class="bead reset">
+<input type="radio" name="secondRow" id="b_0" value="0" /><label for="b_0"></label>
+</div>
+</section>
+<section class="third">
+<div class="bead light-400">
+<input type="radio" name="thirdRow" id="c_1" value="1" /><label for="c_1"></label>
+</div>
+<div class="bead light-300">
+<input type="radio" name="thirdRow" id="c_2" value="2" /><label for="c_2"></label>
+</div>
+<div class="bead light-200">
+<input type="radio" name="thirdRow" id="c_3" value="3" /><label for="c_3"></label>
+</div>
+<div class="bead light-100">
+<input type="radio" name="thirdRow" id="c_4" value="4" /><label for="c_4"></label>
+</div>
+<div class="bead normal">
+<input type="radio" name="thirdRow" id="c_5" value="5" /><label for="c_5"></label>
+</div>
+<div class="bead dark-100">
+<input type="radio" name="thirdRow" id="c_6" value="6" /><label for="c_6"></label>
+</div>
+<div class="bead dark-200">
+<input type="radio" name="thirdRow" id="c_7" value="7" /><label for="c_7"></label>
+</div>
+<div class="bead dark-300">
+<input type="radio" name="thirdRow" id="c_8" value="8" /><label for="c_8"></label>
+</div>
+<div class="bead dark-400">
+<input type="radio" name="thirdRow" id="c_9" value="9" /><label for="c_9"></label>
+</div>
+<div class="bead light-500">
+<input type="radio" name="thirdRow" id="c_10" value="10" /><label for="c_10"></label>
+</div>
+<div class="bead reset">
+<input type="radio" name="thirdRow" id="c_0" value="0" /><label for="c_0"></label>
+</div>
+</section>
+<section class="fourth">
+<div class="bead light-400">
+<input type="radio" name="fourthRow" id="d_1" value="1" /><label for="d_1"></label>
+</div>
+<div class="bead light-300">
+<input type="radio" name="fourthRow" id="d_2" value="2" /><label for="d_2"></label>
+</div>
+<div class="bead light-200">
+<input type="radio" name="fourthRow" id="d_3" value="3" /><label for="d_3"></label>
+</div>
+<div class="bead light-100">
+<input type="radio" name="fourthRow" id="d_4" value="4" /><label for="d_4"></label>
+</div>
+<div class="bead normal">
+<input type="radio" name="fourthRow" id="d_5" value="5" /><label for="d_5"></label>
+</div>
+<div class="bead dark-100">
+<input type="radio" name="fourthRow" id="d_6" value="6" /><label for="d_6"></label>
+</div>
+<div class="bead dark-200">
+<input type="radio" name="fourthRow" id="d_7" value="7" /><label for="d_7"></label>
+</div>
+<div class="bead dark-300">
+<input type="radio" name="fourthRow" id="d_8" value="8" /><label for="d_8"></label>
+</div>
+<div class="bead dark-400">
+<input type="radio" name="fourthRow" id="d_9" value="9" /><label for="d_9"></label>
+</div>
+<div class="bead light-500">
+<input type="radio" name="fourthRow" id="d_10" value="10" /><label for="d_10"></label>
+</div>
+<div class="bead reset">
+<input type="radio" name="fourthRow" id="d_0" value="0" /><label for="d_0"></label>
+</div>
+</section>
+</div><div class="pole right"></div> <div class="pole bottom"></div></div>
 </main>
 </body>
-</html>
