@@ -16,3 +16,9 @@ colors: rebeccapurple
 
 // tutorials
 https://youtu.be/qvtm_N9nhq8?si=l6HZwRYx57iwo96B
+
+https://siriusfuture.ru/simulators
+
+https://www.mathjunior.in/simulator/Simulator.html
+
+https://www.mathematik.uni-marburg.de/~thormae/lectures/ti1/code/abacus/soroban.html
