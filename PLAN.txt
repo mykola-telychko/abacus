@@ -3,6 +3,8 @@ flex-end so beads start on the right.
 Reverse Bead Movement: Adjust the translate and margin-left rules 
 to move beads left when selected, instead of right.
 
+reason why animation too slow on IPad
+
 Важко зробити вирівнювання по лівій стороні . хоча вже можна наробити 12 
 
 відстань між кісточками 

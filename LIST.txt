@@ -7,6 +7,9 @@ https://codepen.io/halyna-dev/pen/opaJwa
 https://codepen.io/MarkBoots/pen/WNPgRLN
 
 https://codepen.io/leimapapa/pen/XWONWgo
+https://codepen.io/dractsop88/pen/eNEGMQ
+
+https://codepen.io/telychko-mykola/pen/myeqjKV
 
 forks: 
 https://codepen.io/telychko-mykola/pen/YPyZJbV
@@ -22,3 +25,12 @@ https://siriusfuture.ru/simulators
 https://www.mathjunior.in/simulator/Simulator.html
 
 https://www.mathematik.uni-marburg.de/~thormae/lectures/ti1/code/abacus/soroban.html
+
+https://www.genieacademy.com/abacus-simulator
+
+video-tutor:
+https://youtu.be/RqTrkaXn-KE?si=u-GZNBLUDV_cWWps
+
+http://www.sillycycle.com/abacus.html#JavaScript
+
+http://www.sillycycle.com/html5/AbacusRU.html
