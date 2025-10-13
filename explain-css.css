@@ -1,3 +1,13 @@
+/* The provided code is a CSS excerpt that styles an interactive abacus component. It uses custom properties (variables) and advanced selectors to control the appearance and behavior of abacus wires and beads.
+
+Each .wires section represents a wire on the abacus, with classes like .tenth, .eleventh, and .twelfth indicating their position or value. For each wire, color properties (--color-h for hue and --color-s for saturation) are set, likely to visually distinguish different wires.
+
+The .bead:has(input:checked) ~ .bead input selector targets beads that come after a checked bead, incrementing a CSS counter called valueAdded by a specific amount. The increment values grow by powers of ten for each wire, reflecting the abacus's place value system (e.g., 100,000,000 for the tenth wire, up to 100,000,000,000 for the twelfth).
+
+The selector .bead:has(input:checked) ~ .bead:not(.reset) label applies a translation to bead labels when a bead is checked, moving them visually to indicate their active state. The translation uses the bead's width variable for precise positioning.
+
+Finally, the .bead class sets each bead's position to relative and applies a smooth transition effect to the left margin, making bead movements animated and visually appealing. This enhances the user experience when interacting with the abacus in the browser. */
+
 /* Глобальні змінні для кольорів та розмірів */
 :root {
     --background-color: #faf1cb; /* Колір фону */
